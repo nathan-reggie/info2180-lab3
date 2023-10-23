@@ -18,6 +18,12 @@ document.addEventListener("DOMContentLoaded", (event)=>{
                 history.push("O")
             }
         })
+        square.addEventListener("mouseover", (event)=>{
+            square.classList.add("hover")
+        })
+        square.addEventListener("mouseout", (event)=>{
+            square.classList.remove("hover")
+        })
     })
 })
 
