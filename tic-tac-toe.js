@@ -3,10 +3,11 @@ let history = []
 
 document.addEventListener("DOMContentLoaded", (event) => {
     const squares = document.querySelectorAll("#board div")
+    let statusEl = document.querySelector("#status")
     squares.forEach(square => {
         square.classList.add("square")
         square.addEventListener("click", (event) => {
-            if (square.textContent != "") {
+            if (square.textContent != "" || statusEl.classList.contains("you-won")) {
                 return
             }
             if (history.length == 0 || history[history.length - 1] == "O") {
