@@ -27,6 +27,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
             square.classList.remove("hover")
         })
     })
+    const newGameButton = document.querySelector(".controls .btn")
+    newGameButton.addEventListener("click", (event) => {
+        history = []
+        let statusEl = document.querySelector("#status")
+        const squares = document.querySelectorAll("#board div")
+        squares.forEach(square => {
+            square.textContent = ""
+        })
+        statusEl.classList.remove("you-won")
+        statusEl.innerHTML = "Move your mouse over a square and click to play an X or an O."
+    })
 })
 
 
@@ -41,11 +52,11 @@ function checkWin() {
             oCount = 0
         }
         response = checkWinner(squares, index, xCount, oCount, statusEl)
-                if(response.winner == true){
-                    return
-                }
-                xCount = response.xCount
-                oCount = response.oCount
+        if (response.winner == true) {
+            return
+        }
+        xCount = response.xCount
+        oCount = response.oCount
     }
     xCount = 0
     oCount = 0
@@ -55,11 +66,11 @@ function checkWin() {
         oCount = 0
         for (let index2 = index1; index2 < squares.length; index2 += 3) {
             response = checkWinner(squares, index2, xCount, oCount, statusEl)
-                if(response.winner == true){
-                    return
-                }
-                xCount = response.xCount
-                oCount = response.oCount
+            if (response.winner == true) {
+                return
+            }
+            xCount = response.xCount
+            oCount = response.oCount
         }
     }
     xCount = 0
@@ -71,7 +82,7 @@ function checkWin() {
         if (index1 == 0) {
             for (let index2 = index1; index2 < squares.length; index2 += 4) {
                 response = checkWinner(squares, index2, xCount, oCount, statusEl)
-                if(response.winner == true){
+                if (response.winner == true) {
                     return
                 }
                 xCount = response.xCount
@@ -79,9 +90,9 @@ function checkWin() {
             }
         }
         else {
-            for (let index2 = index1; index2 < squares.length-1; index2 += 2) {
+            for (let index2 = index1; index2 < squares.length - 1; index2 += 2) {
                 response = checkWinner(squares, index2, xCount, oCount, statusEl)
-                if(response.winner == true){
+                if (response.winner == true) {
                     return
                 }
                 xCount = response.xCount
